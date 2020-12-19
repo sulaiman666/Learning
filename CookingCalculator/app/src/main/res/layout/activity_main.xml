@@ -4,15 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <TextView
+    <EditText
+        android:id="@+id/measured_unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:hint="@string/measured_unit"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/convert_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/which_converting_you_would_do"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measured_unit" />
+
+    <RadioGroup
+        android:id="@+id/convert_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/ounce_to_gram"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/convert_question">
+
+        <RadioButton
+            android:id="@+id/ounce_to_gram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ounce_to_gram" />
+
+        <RadioButton
+            android:id="@+id/ounce_to_milliliters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ounce_to_milliliter" />
+
+    </RadioGroup>
+
+    <Switch
+        android:id="@+id/roundup_measurement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/roundup_measurement"
+        android:checked="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/convert_option" />
+
+    <Button
+        android:id="@+id/calculate_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/roundup_measurement"/>
+
+    <TextView
+        android:id="@+id/measurement_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/measured_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calculate_button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Cooking Calculator</string>
+    <string name="measured_unit">Measured unit</string>
+    <string name="which_converting_you_would_do">Which converting you would do?</string>
+    <string name="ounce_to_gram">Ounce to gram</string>
+    <string name="ounce_to_milliliter">Ounce to milliliter</string>
+    <string name="roundup_measurement">Roundup measurement?</string>
+    <string name="calculate">CALCULATE</string>
+    <string name="measured_amount">Measured amount</string>
 </resources>
