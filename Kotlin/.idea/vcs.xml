@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/src/main/kotlin/Basic-Kotlin-Android" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/main/kotlin/BasicAndroidKotlin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/main/kotlin/BasicKotlinAndroidGoogle/Basic-Android-Kotlin" vcs="Git" />
+  </component>
+</project>
