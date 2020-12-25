@@ -7,4 +7,6 @@
     <string name="roundup_measurement">Roundup measurement?</string>
     <string name="calculate">CALCULATE</string>
     <string name="measured_amount">Measured amount</string>
+    <string name="result_ml">Measurement: %.2f ml</string>
+    <string name="result_gr">Measurement: %.2f gr</string>
 </resources>
