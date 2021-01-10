@@ -67,7 +67,7 @@ class WordAdapter(private val letterId: String, context: Context) :
             .inflate(R.layout.item_view, parent, false)
 
         // Setup custom accessibility delegate to set the text read
-        layout.accessibilityDelegate = Accessibility
+        layout.accessibilityDelegate = LetterAdapter
 
         return WordViewHolder(layout)
     }
@@ -85,8 +85,8 @@ class WordAdapter(private val letterId: String, context: Context) :
         holder.button.text = item
 
         holder.button.setOnClickListener {
-            val queryUrl: Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}$item")
-            val intent: Intent = Intent(Intent.ACTION_VIEW, queryUrl)
+            val queryUrl: Uri = Uri.parse("${WordListFragment.SEARCH_PREFIX}${item}")
+            val intent = Intent(Intent.ACTION_VIEW, queryUrl)
             context.startActivity(intent)
         }
 
