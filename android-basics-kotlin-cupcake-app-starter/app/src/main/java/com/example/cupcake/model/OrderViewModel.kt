@@ -10,8 +10,11 @@ import java.util.*
 
 private const val PRICE_PER_CUPCAKE: Double = 2.00
 private const val PRICE_FOR_SAME_DAY_PICKUP: Double = 3.0
+private const val PRICE_FOR_SPECIAL_FLAVOR: Double = 2.50
 
 class OrderViewModel : ViewModel() {
+
+    private var _specialFlavor = "Special Flavor"
 
     private val _quantity = MutableLiveData<Int>()
     val quantity: LiveData<Int> = _quantity
@@ -40,6 +43,7 @@ class OrderViewModel : ViewModel() {
 
     fun setFlavor(desiredFlavour: String) {
         _flavor.value = desiredFlavour
+        if (_flavor.value == _specialFlavor) updatePrice()
     }
 
     fun setDate(pickupDate: String) {
@@ -71,6 +75,7 @@ class OrderViewModel : ViewModel() {
 
     private fun updatePrice() {
         var calculatedPrice = (_quantity.value ?: 0) * PRICE_PER_CUPCAKE
+        if (_flavor.value == _specialFlavor) calculatedPrice += PRICE_FOR_SPECIAL_FLAVOR
         if (dateOption[0] == _date.value) {
             calculatedPrice += PRICE_FOR_SAME_DAY_PICKUP
         }
