@@ -86,5 +86,8 @@ class PickupFragment : Fragment() {
         binding?.root?.findViewById<TextView>(R.id.special_flavor_hint)?.visibility =
             if (sharedViewModel.isItSpecialFlavor()) View.VISIBLE
             else View.GONE
+        binding?.root?.findViewById<TextView>(R.id.same_day_price)?.visibility =
+            if (sharedViewModel.isItSpecialFlavor()) View.GONE
+            else View.VISIBLE
     }
 }
