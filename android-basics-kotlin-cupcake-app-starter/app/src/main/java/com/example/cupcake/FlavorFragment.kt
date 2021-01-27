@@ -55,10 +55,19 @@ class FlavorFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        sharedViewModel.setDate("1")
+    }
+
+    // example changing xml visibility
+    // findViewById<TextView>(R.id.errorText).visibility = View.VISIBLE
+
     /**
      * Navigate to the next screen to choose pickup date.
      */
     fun goToNextScreen() {
+        sharedViewModel.specialFlavorDate()
         findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
     }
 
