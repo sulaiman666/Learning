@@ -26,9 +26,6 @@
     <string name="salted_caramel">Salted Caramel</string>
     <string name="coffee">Coffee</string>
     <string name="special_flavor">Special Flavor</string>
-    <string name="special_flavor_hint">Same day not available for special flavor</string>
-    <string name="special_flavor_price">Special flavor add 0.75$ for each cupcake</string>
-    <string name="same_day_price">For same day delivery add 3$ to total price</string>
     <string name="cancel">Cancel</string>
     <string name="next">Next</string>
     <string name="choose_pickup_date">Choose Pickup Date</string>
@@ -41,9 +38,18 @@
     <string name="total_price">Total %s</string>
     <string name="new_cupcake_order">New Cupcake Order</string>
     <string name="order_details">Quantity: %1$s \n Flavor: %2$s \nPickup date: %3$s \n
-        Total: %4$s \n\n Thank you!</string>
+        Total: %4$s \n\n Thank you for your order Guest!</string>
+    <string name="order_details_with_name">Quantity: %1$s \nFlavor: %2$s \nPickup date: %3$s \n
+        Total: %4$s \n\n Thank you %5$s for your order!</string>
     <plurals name="cupcakes">
         <item quantity="one">%d cupcake</item>
         <item quantity="other">%d cupcakes</item>
     </plurals>
+
+    <!--Challenge-->
+    <string name="special_flavor_hint">Same day not available for special flavor</string>
+    <string name="special_flavor_price">Special flavor add 0.75$ for each cupcake</string>
+    <string name="same_day_price">For same day delivery add 3$ to total price</string>
+    <string name="name_label">Name</string>
+    <string name="enter_your_name">Insert your name (Optional)</string>
 </resources>

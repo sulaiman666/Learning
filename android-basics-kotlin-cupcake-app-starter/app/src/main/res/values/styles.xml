@@ -43,6 +43,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="Widget.Cupcake.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!-- Radio Button style -->
     <style name="Widget.Cupcake.CompoundButton.RadioButton"
         parent="Widget.MaterialComponents.CompoundButton.RadioButton">
