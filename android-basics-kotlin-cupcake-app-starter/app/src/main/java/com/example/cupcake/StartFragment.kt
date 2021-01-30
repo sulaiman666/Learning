@@ -58,7 +58,8 @@ class StartFragment : Fragment() {
         if (sharedViewModel.hasNoFlavorSet()) {
             sharedViewModel.setFlavor(getString(R.string.vanilla))
         }
-        findNavController().navigate(R.id.action_startFragment_to_flavorFragment)
+        if (quantity > 1) findNavController().navigate(R.id.action_startFragment_to_multipleFlavorFragment)
+        else findNavController().navigate(R.id.action_startFragment_to_flavorFragment)
     }
 
     /**

@@ -14,8 +14,6 @@ private const val PRICE_FOR_SPECIAL_FLAVOR: Double = 0.75
 
 class OrderViewModel : ViewModel() {
 
-    private var _specialFlavor = "Special Flavor"
-
     private val _quantity = MutableLiveData<Int>()
     val quantity: LiveData<Int> = _quantity
 
@@ -29,6 +27,14 @@ class OrderViewModel : ViewModel() {
     val price: LiveData<String> = Transformations.map(_price) {
         NumberFormat.getCurrencyInstance().format(it)
     }
+
+    private var _chooseNumber = MutableLiveData<Int>()
+    val chooseNumber: LiveData<Int> = _chooseNumber
+
+    private var _maxNumberOfFlavor = MutableLiveData<Int>()
+    val maxNumberOfFlavor: LiveData<Int> = _maxNumberOfFlavor
+
+    private val _specialFlavor = "Special Flavor"
 
     val dateOption = getPickupOptions()
 
@@ -73,11 +79,14 @@ class OrderViewModel : ViewModel() {
         _flavor.value = ""
         _date.value = dateOption[1]
         _price.value = 0.0
+        _chooseNumber.value = 0
     }
 
-    fun updatePrice() {
+    private fun updatePrice() {
         var calculatedPrice =
-            if (_flavor.value == _specialFlavor) (_quantity.value ?: 0) * (PRICE_PER_CUPCAKE + PRICE_FOR_SPECIAL_FLAVOR)
+            if (_flavor.value?.contains(_specialFlavor) == true) {
+                ((_quantity.value ?: 0) / _chooseNumber.value!!) * (PRICE_PER_CUPCAKE + PRICE_FOR_SPECIAL_FLAVOR) + (((_quantity.value ?: 0) / _chooseNumber.value!!) * (_chooseNumber.value!! - 1)) * PRICE_PER_CUPCAKE
+            }
             else (_quantity.value ?: 0) * PRICE_PER_CUPCAKE
         if (dateOption[0] == _date.value) {
             calculatedPrice += PRICE_FOR_SAME_DAY_PICKUP
@@ -85,13 +94,22 @@ class OrderViewModel : ViewModel() {
         _price.value = calculatedPrice
     }
 
-    fun isItSpecialFlavor(): Boolean = _flavor.value == _specialFlavor
+    fun isItSpecialFlavor(): Boolean = _flavor.value!!.contains(_specialFlavor)
 
     fun specialFlavorDate() {
         _date.value =
             if (isItSpecialFlavor()) dateOption[1]
             else dateOption[0]
         updatePrice()
+    }
+
+    fun limitFlavor(numFlavor: Int): Boolean{
+        _maxNumberOfFlavor.value = when (_quantity.value) {
+            6 -> 2
+            else -> 3
+        }
+        _chooseNumber.value = numFlavor
+        return numFlavor <= _maxNumberOfFlavor.value!!
     }
 
 }

@@ -20,6 +20,7 @@
     <string name="six_cupcakes">Six Cupcakes</string>
     <string name="twelve_cupcakes">Twelve Cupcakes</string>
     <string name="choose_flavor">Choose Flavor</string>
+    <string name="choose_multiple_flavor">Choose Multiple Flavor</string>
     <string name="vanilla">Vanilla</string>
     <string name="chocolate">Chocolate</string>
     <string name="red_velvet">Red Velvet</string>
@@ -52,4 +53,8 @@
     <string name="same_day_price">For same day delivery add 3$ to total price</string>
     <string name="name_label">Name</string>
     <string name="enter_your_name">Insert your name (Optional)</string>
+
+    <!--Error box-->
+    <string name="error_title">Flavor exceeded limit!</string>
+    <string name="error_massage">You pick %d flavors, your max flavor is %d flavors</string>
 </resources>
