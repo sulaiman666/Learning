@@ -62,13 +62,26 @@ class SummaryFragment : Fragment() {
      */
     fun sendOrder() {
         val numberOfCupcakes = sharedViewModel.quantity.value ?: 0
-        val orderSummary = getString(
-            R.string.order_details,
-            resources.getQuantityString(R.plurals.cupcakes, numberOfCupcakes, numberOfCupcakes),
-            sharedViewModel.flavor.value.toString(),
-            sharedViewModel.date.value.toString(),
-            sharedViewModel.price.value.toString()
-        )
+        val userName = binding?.textInputEditText?.text.toString()
+
+        val orderSummary = if (userName != "") {
+            getString(
+                R.string.order_details_with_name,
+                resources.getQuantityString(R.plurals.cupcakes, numberOfCupcakes, numberOfCupcakes),
+                sharedViewModel.flavor.value.toString(),
+                sharedViewModel.date.value.toString(),
+                sharedViewModel.price.value.toString(),
+                userName
+            )
+        } else {
+            getString(
+                R.string.order_details,
+                resources.getQuantityString(R.plurals.cupcakes, numberOfCupcakes, numberOfCupcakes),
+                sharedViewModel.flavor.value.toString(),
+                sharedViewModel.date.value.toString(),
+                sharedViewModel.price.value.toString()
+            )
+        }
 
         val intent = Intent(Intent.ACTION_SEND)
             .setType("text/plain")

@@ -20,6 +20,7 @@
     <string name="six_cupcakes">Six Cupcakes</string>
     <string name="twelve_cupcakes">Twelve Cupcakes</string>
     <string name="choose_flavor">Choose Flavor</string>
+    <string name="choose_multiple_flavor">Choose Multiple Flavor</string>
     <string name="vanilla">Vanilla</string>
     <string name="chocolate">Chocolate</string>
     <string name="red_velvet">Red Velvet</string>
@@ -38,9 +39,22 @@
     <string name="total_price">Total %s</string>
     <string name="new_cupcake_order">New Cupcake Order</string>
     <string name="order_details">Quantity: %1$s \n Flavor: %2$s \nPickup date: %3$s \n
-        Total: %4$s \n\n Thank you!</string>
+        Total: %4$s \n\n Thank you for your order Guest!</string>
+    <string name="order_details_with_name">Quantity: %1$s \nFlavor: %2$s \nPickup date: %3$s \n
+        Total: %4$s \n\n Thank you %5$s for your order!</string>
     <plurals name="cupcakes">
         <item quantity="one">%d cupcake</item>
         <item quantity="other">%d cupcakes</item>
     </plurals>
+
+    <!--Challenge-->
+    <string name="special_flavor_hint">Same day not available for special flavor</string>
+    <string name="special_flavor_price">Special flavor add 0.75$ for each cupcake</string>
+    <string name="same_day_price">For same day delivery add 3$ to total price</string>
+    <string name="name_label">Name</string>
+    <string name="enter_your_name">Insert your name (Optional)</string>
+
+    <!--Error box-->
+    <string name="error_title">Flavor exceeded limit!</string>
+    <string name="error_massage">You pick %d flavors, your max flavor is %d flavors</string>
 </resources>

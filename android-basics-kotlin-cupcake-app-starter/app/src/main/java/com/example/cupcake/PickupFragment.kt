@@ -19,6 +19,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -53,6 +55,9 @@ class PickupFragment : Fragment() {
             viewModel = sharedViewModel
             pickupFragment = this@PickupFragment
         }
+
+        changeVisibility()
+
     }
 
     /**
@@ -74,5 +79,15 @@ class PickupFragment : Fragment() {
     fun resetOrder() {
         sharedViewModel.resetOrder()
         findNavController().navigate(R.id.action_pickupFragment_to_startFragment)
+    }
+
+    private fun changeVisibility() {
+        binding?.root?.findViewById<RadioButton>(R.id.option0)?.isEnabled = !sharedViewModel.isItSpecialFlavor()
+        binding?.root?.findViewById<TextView>(R.id.special_flavor_hint)?.visibility =
+            if (sharedViewModel.isItSpecialFlavor()) View.VISIBLE
+            else View.GONE
+        binding?.root?.findViewById<TextView>(R.id.same_day_price)?.visibility =
+            if (sharedViewModel.isItSpecialFlavor()) View.GONE
+            else View.VISIBLE
     }
 }

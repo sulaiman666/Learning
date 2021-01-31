@@ -26,6 +26,21 @@
         <action
             android:id="@+id/action_startFragment_to_flavorFragment"
             app:destination="@id/flavorFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_multipleFlavorFragment"
+            app:destination="@id/multipleFlavorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/multipleFlavorFragment"
+        android:name="com.example.cupcake.MultipleFlavorFragment"
+        android:label="@string/choose_multiple_flavor"
+        tools:layout="@layout/fragment_multiple_flavor">
+        <action
+            android:id="@+id/action_multipleFlavorFragment_to_pickupFragment"
+            app:destination="@id/pickupFragment" />
+        <action
+            android:id="@+id/action_multipleFlavorFragment_to_startFragment"
+            app:destination="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/flavorFragment"

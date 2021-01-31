@@ -10,6 +10,7 @@ import java.util.*
 
 private const val PRICE_PER_CUPCAKE: Double = 2.00
 private const val PRICE_FOR_SAME_DAY_PICKUP: Double = 3.0
+private const val PRICE_FOR_SPECIAL_FLAVOR: Double = 0.75
 
 class OrderViewModel : ViewModel() {
 
@@ -27,6 +28,14 @@ class OrderViewModel : ViewModel() {
         NumberFormat.getCurrencyInstance().format(it)
     }
 
+    private var _chooseNumber = MutableLiveData<Int>()
+    val chooseNumber: LiveData<Int> = _chooseNumber
+
+    private var _maxNumberOfFlavor = MutableLiveData<Int>()
+    val maxNumberOfFlavor: LiveData<Int> = _maxNumberOfFlavor
+
+    private val _specialFlavor = "Special Flavor"
+
     val dateOption = getPickupOptions()
 
     init {
@@ -40,6 +49,9 @@ class OrderViewModel : ViewModel() {
 
     fun setFlavor(desiredFlavour: String) {
         _flavor.value = desiredFlavour
+        _date.value = dateOption[1]
+        isItSpecialFlavor()
+        updatePrice()
     }
 
     fun setDate(pickupDate: String) {
@@ -65,16 +77,39 @@ class OrderViewModel : ViewModel() {
     fun resetOrder() {
         _quantity.value = 0
         _flavor.value = ""
-        _date.value = dateOption[0]
+        _date.value = dateOption[1]
         _price.value = 0.0
+        _chooseNumber.value = 0
     }
 
     private fun updatePrice() {
-        var calculatedPrice = (_quantity.value ?: 0) * PRICE_PER_CUPCAKE
+        var calculatedPrice =
+            if (_flavor.value?.contains(_specialFlavor) == true) {
+                ((_quantity.value ?: 0) / _chooseNumber.value!!) * (PRICE_PER_CUPCAKE + PRICE_FOR_SPECIAL_FLAVOR) + (((_quantity.value ?: 0) / _chooseNumber.value!!) * (_chooseNumber.value!! - 1)) * PRICE_PER_CUPCAKE
+            }
+            else (_quantity.value ?: 0) * PRICE_PER_CUPCAKE
         if (dateOption[0] == _date.value) {
             calculatedPrice += PRICE_FOR_SAME_DAY_PICKUP
         }
         _price.value = calculatedPrice
+    }
+
+    fun isItSpecialFlavor(): Boolean = _flavor.value!!.contains(_specialFlavor)
+
+    fun specialFlavorDate() {
+        _date.value =
+            if (isItSpecialFlavor()) dateOption[1]
+            else dateOption[0]
+        updatePrice()
+    }
+
+    fun limitFlavor(numFlavor: Int): Boolean{
+        _maxNumberOfFlavor.value = when (_quantity.value) {
+            6 -> 2
+            else -> 3
+        }
+        _chooseNumber.value = numFlavor
+        return numFlavor <= _maxNumberOfFlavor.value!!
     }
 
 }
