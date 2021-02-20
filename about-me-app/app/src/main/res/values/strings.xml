@@ -22,4 +22,6 @@
         for my laptop.
     </string>
     <string name="dbfz_image">DBFZ Image</string>
+    <string name="ask_nickname">What is your nickname?</string>
+    <string name="done">Done</string>
 </resources>
