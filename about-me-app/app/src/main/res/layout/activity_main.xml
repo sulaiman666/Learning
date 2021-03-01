@@ -2,6 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="myName"
+            type="com.example.aboutmeapp.MyName" />
+
+    </data>
+
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -15,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="@string/sulaiman"
+            android:text="@={myName.name}"
             android:textAlignment="center" />
 
         <EditText
@@ -50,6 +58,7 @@
             android:onClick="updateNickname"
             android:paddingBottom="@dimen/small_padding"
             android:textAlignment="center"
+            android:text="@={myName.nickName}"
             android:visibility="gone"
             tools:visibility="visible" />
 
